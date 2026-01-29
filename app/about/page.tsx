@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Header from "../components/Header";
+import NewsSection from "../components/NewsSection";
 
 export default function About() {
   return (
@@ -89,38 +90,7 @@ export default function About() {
           </div>
 
           {/* News */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-klee text-green-primary mb-6">ニュース</h2>
-            <div className="space-y-4">
-              <a href="#" className="block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-green-primary mb-2">2025.01.27</p>
-                    <p className="text-foreground/80">公式ウェブサイトをリニューアルしました</p>
-                  </div>
-                  <span className="text-green-primary shrink-0">→</span>
-                </div>
-              </a>
-              <a href="#" className="block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-green-primary mb-2">2025.01.15</p>
-                    <p className="text-foreground/80">季節の野菜ボックス、冬の新商品を追加しました</p>
-                  </div>
-                  <span className="text-green-primary shrink-0">→</span>
-                </div>
-              </a>
-              <a href="#" className="block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-green-primary mb-2">2025.01.01</p>
-                    <p className="text-foreground/80">新年のご挨拶</p>
-                  </div>
-                  <span className="text-green-primary shrink-0">→</span>
-                </div>
-              </a>
-            </div>
-          </div>
+          <NewsSection className="mb-16" />
 
         </div>
       </section>

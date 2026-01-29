@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
@@ -21,13 +22,20 @@ export default function Header({ currentPage = "home" }: HeaderProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 border-b border-beige-dark">
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-light tracking-wider text-green-primary">
+      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center">
+        <Link href="/" className="flex items-center gap-2 text-2xl font-light tracking-wider text-green-primary">
+          <Image
+            src="/logo-icon.png"
+            alt="imperfect veggies"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+          />
           imperfect veggies
         </Link>
 
         {/* デスクトップナビゲーション */}
-        <ul className="hidden md:flex items-center gap-8 text-sm">
+        <ul className="hidden md:flex items-center gap-8 text-sm ml-auto mr-6">
           {navLinks.map((link) => (
             <li key={link.key}>
               <Link
@@ -45,7 +53,7 @@ export default function Header({ currentPage = "home" }: HeaderProps) {
         </ul>
 
         {/* 右側のアイコン群 */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center">
           {/* ショッピングカート */}
           <button
             onClick={openCart}

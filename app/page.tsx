@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Header from "./components/Header";
+import NewsSection from "./components/NewsSection";
 
 export default function Home() {
   return (
@@ -205,6 +206,17 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-green-primary text-sm tracking-widest mb-4">NEWS</p>
+            <h2 className="text-3xl font-klee">お知らせ</h2>
+          </div>
+          <NewsSection showTitle={false} />
         </div>
       </section>
 

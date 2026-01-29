@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Header from "../components/Header";
+import NewsSection from "../components/NewsSection";
 import { useCart } from "../context/CartContext";
 
 const products = [
@@ -157,6 +158,13 @@ export default function ProductsPage() {
           </div>
         </div>
       </main>
+
+      {/* News Section */}
+      <section className="py-16 bg-beige/30">
+        <div className="max-w-4xl mx-auto px-6">
+          <NewsSection maxItems={2} />
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-green-primary text-white py-12">
