@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Klee_One, Zen_Maru_Gothic } from "next/font/google";
 import "./globals.css";
+import Providers from "./components/Providers";
 
 const kleeOne = Klee_One({
   weight: ["400", "600"],
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${kleeOne.variable} ${zenMaru.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

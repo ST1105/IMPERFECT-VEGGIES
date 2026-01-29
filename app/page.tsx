@@ -1,120 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Header from "./components/Header";
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-beige-dark">
-        <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-light tracking-wider text-green-primary">
-            imperfect veggies
-          </Link>
-
-          {/* デスクトップナビゲーション */}
-          <ul className="hidden md:flex items-center gap-8 text-sm">
-            <li>
-              <Link href="#about" className="text-foreground/70 hover:text-green-primary transition-colors">
-                私たちについて
-              </Link>
-            </li>
-            <li>
-              <Link href="#products" className="text-foreground/70 hover:text-green-primary transition-colors">
-                商品紹介
-              </Link>
-            </li>
-            <li>
-              <Link href="#shop" className="text-foreground/70 hover:text-green-primary transition-colors">
-                店舗情報
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="text-foreground/70 hover:text-green-primary transition-colors">
-                お問い合わせ
-              </Link>
-            </li>
-          </ul>
-
-          {/* 右側のアイコン群 */}
-          <div className="flex items-center gap-2">
-            {/* ショッピングカート */}
-            <Link
-              href="/cart"
-              className="p-2 text-foreground/70 hover:text-green-primary transition-colors relative"
-              aria-label="ショッピングカート"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </Link>
-
-            {/* ハンバーガーメニューボタン（モバイル） */}
-            <button
-              className="md:hidden p-2 -mr-2 text-foreground/70 hover:text-green-primary transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="メニュー"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </nav>
-
-        {/* モバイルメニュー */}
-        <div
-          className={`md:hidden bg-white border-t border-beige-dark overflow-hidden transition-all duration-500 ease-in-out ${
-            isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <ul className="px-6 py-4 space-y-4">
-            <li className={`transform transition-all duration-500 ${isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`} style={{ transitionDelay: "100ms" }}>
-              <Link
-                href="#about"
-                className="block text-foreground/70 hover:text-green-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                私たちについて
-              </Link>
-            </li>
-            <li className={`transform transition-all duration-500 ${isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`} style={{ transitionDelay: "200ms" }}>
-              <Link
-                href="#products"
-                className="block text-foreground/70 hover:text-green-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                商品紹介
-              </Link>
-            </li>
-            <li className={`transform transition-all duration-500 ${isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`} style={{ transitionDelay: "300ms" }}>
-              <Link
-                href="#shop"
-                className="block text-foreground/70 hover:text-green-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                店舗情報
-              </Link>
-            </li>
-            <li className={`transform transition-all duration-500 ${isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}`} style={{ transitionDelay: "400ms" }}>
-              <Link
-                href="#contact"
-                className="block text-foreground/70 hover:text-green-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                お問い合わせ
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </header>
+      <Header currentPage="home" />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">

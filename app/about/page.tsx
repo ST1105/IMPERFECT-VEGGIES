@@ -1,38 +1,10 @@
 import Link from "next/link";
+import Header from "../components/Header";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-beige-dark">
-        <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-light tracking-wider text-green-primary">
-            imperfect veggies
-          </Link>
-          <ul className="hidden md:flex items-center gap-8 text-sm">
-            <li>
-              <Link href="/#about" className="text-foreground/70 hover:text-green-primary transition-colors">
-                私たちについて
-              </Link>
-            </li>
-            <li>
-              <Link href="/#products" className="text-foreground/70 hover:text-green-primary transition-colors">
-                商品紹介
-              </Link>
-            </li>
-            <li>
-              <Link href="/#shop" className="text-foreground/70 hover:text-green-primary transition-colors">
-                店舗情報
-              </Link>
-            </li>
-            <li>
-              <Link href="/#contact" className="text-foreground/70 hover:text-green-primary transition-colors">
-                お問い合わせ
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <Header currentPage="about" />
 
       {/* Hero */}
       <section className="pt-32 pb-8 bg-beige/30">
