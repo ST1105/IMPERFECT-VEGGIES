@@ -23,13 +23,13 @@ export default function Header({ currentPage = "home" }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 border-b border-beige-dark">
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center">
-        <Link href="/" className="flex items-center gap-2 text-2xl font-light tracking-wider text-green-primary">
+        <Link href="/" className="flex items-center gap-4 text-2xl font-light tracking-wider text-green-primary">
           <Image
             src="/logo-icon.png"
             alt="imperfect veggies"
-            width={32}
-            height={32}
-            className="w-8 h-8"
+            width={48}
+            height={48}
+            className="w-12 h-12"
           />
           imperfect veggies
         </Link>
