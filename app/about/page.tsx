@@ -18,10 +18,10 @@ export default function About() {
       {/* キャッチコピー */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-klee leading-tight mb-8">
-            「もったいない」を
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-klee leading-tight mb-8">
+            <span className="inline-block">「もったいない」を</span>
             <br />
-            <span className="text-green-primary">「おいしい」に。</span>
+            <span className="inline-block text-green-primary">「おいしい」に。</span>
           </h2>
         </div>
       </section>
@@ -41,11 +41,14 @@ export default function About() {
           <div className="mb-16">
             <h2 className="text-2xl font-klee text-green-primary mb-6">私たちが解決したい課題</h2>
             <div className="bg-beige/50 rounded-2xl p-8 mb-8">
-              <p className="text-4xl font-klee text-green-primary mb-2">年間 600万トン</p>
+              <p className="text-3xl sm:text-4xl font-klee text-green-primary mb-2">
+                <span className="inline-block">年間</span>{" "}
+                <span className="inline-block">600万t</span>
+              </p>
               <p className="text-foreground/70">日本で廃棄される食品の量</p>
             </div>
             <p className="text-foreground/70 leading-loose">
-              日本では年間約600万トンもの食品が廃棄されています。
+              日本では年間約600万tもの食品が廃棄されています。
               その中には、味や品質には全く問題がないにもかかわらず、
               見た目の理由だけで市場に出回ることができない野菜が大量に含まれています。
             </p>
@@ -59,7 +62,7 @@ export default function About() {
           <div className="mb-16">
             <h2 className="text-2xl font-klee text-green-primary mb-6">私たちのアプローチ</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
+              <div className="text-center md:pt-8">
                 <div className="w-16 h-16 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🥬</span>
                 </div>
@@ -68,7 +71,7 @@ export default function About() {
                   農家から規格外野菜を適正価格で直接買い取り、農家の収入を支援します。
                 </p>
               </div>
-              <div className="text-center">
+              <div className="text-center md:pt-8">
                 <div className="w-16 h-16 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">✨</span>
                 </div>
@@ -77,7 +80,7 @@ export default function About() {
                   見た目ではなく、味や栄養価という本質的な価値にフォーカスした商品開発。
                 </p>
               </div>
-              <div className="text-center">
+              <div className="text-center md:pt-8">
                 <div className="w-16 h-16 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🌍</span>
                 </div>

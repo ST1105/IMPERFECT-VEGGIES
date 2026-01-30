@@ -21,12 +21,14 @@ const newsItems = [
 type NewsSectionProps = {
   showTitle?: boolean;
   maxItems?: number;
+  mobileMaxItems?: number;
   className?: string;
 };
 
 export default function NewsSection({
   showTitle = true,
   maxItems = 3,
+  mobileMaxItems = 1,
   className = "",
 }: NewsSectionProps) {
   const displayItems = newsItems.slice(0, maxItems);
@@ -49,7 +51,7 @@ export default function NewsSection({
           <Link
             key={index}
             href={item.href}
-            className="block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors"
+            className={`block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors ${index >= mobileMaxItems ? "hidden md:block" : ""}`}
           >
             <div className="flex items-start justify-between gap-4">
               <div>

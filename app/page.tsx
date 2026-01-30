@@ -125,7 +125,7 @@ export default function Home() {
             ].map((product, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow"
+                className={`bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow ${index > 0 ? "hidden md:block" : ""}`}
               >
                 <div className="bg-beige rounded-xl aspect-square mb-6 flex items-center justify-center">
                   <div className="text-center text-green-primary/40">
