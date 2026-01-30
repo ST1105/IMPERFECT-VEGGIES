@@ -59,33 +59,33 @@ export default function About() {
             </p>
           </div>
 
-          <div className="mb-16">
-            <h2 className="text-2xl font-klee text-green-primary mb-6">私たちのアプローチ</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center md:pt-8">
-                <div className="w-16 h-16 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🥬</span>
+          <div className="mb-16 md:mb-24">
+            <h2 className="text-2xl md:text-3xl font-klee text-green-primary mb-6 md:mb-12">私たちのアプローチ</h2>
+            <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+              <div className="text-center md:pt-8 md:px-4">
+                <div className="w-16 h-16 md:w-24 md:h-24 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                  <span className="text-2xl md:text-4xl">🥬</span>
                 </div>
-                <h3 className="font-klee text-lg mb-2">直接買い取り</h3>
-                <p className="text-foreground/60 text-sm">
+                <h3 className="font-klee text-lg md:text-xl mb-2 md:mb-4">直接買い取り</h3>
+                <p className="text-foreground/60 text-sm md:text-base md:leading-relaxed">
                   農家から規格外野菜を適正価格で直接買い取り、農家の収入を支援します。
                 </p>
               </div>
-              <div className="text-center md:pt-8">
-                <div className="w-16 h-16 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">✨</span>
+              <div className="text-center md:pt-8 md:px-4">
+                <div className="w-16 h-16 md:w-24 md:h-24 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                  <span className="text-2xl md:text-4xl">✨</span>
                 </div>
-                <h3 className="font-klee text-lg mb-2">価値の再定義</h3>
-                <p className="text-foreground/60 text-sm">
+                <h3 className="font-klee text-lg md:text-xl mb-2 md:mb-4">価値の再定義</h3>
+                <p className="text-foreground/60 text-sm md:text-base md:leading-relaxed">
                   見た目ではなく、味や栄養価という本質的な価値にフォーカスした商品開発。
                 </p>
               </div>
-              <div className="text-center md:pt-8">
-                <div className="w-16 h-16 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🌍</span>
+              <div className="text-center md:pt-8 md:px-4">
+                <div className="w-16 h-16 md:w-24 md:h-24 bg-green-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                  <span className="text-2xl md:text-4xl">🌍</span>
                 </div>
-                <h3 className="font-klee text-lg mb-2">意識の変革</h3>
-                <p className="text-foreground/60 text-sm">
+                <h3 className="font-klee text-lg md:text-xl mb-2 md:mb-4">意識の変革</h3>
+                <p className="text-foreground/60 text-sm md:text-base md:leading-relaxed">
                   消費者の皆様と共に、食に対する意識を変え、持続可能な社会を目指します。
                 </p>
               </div>
