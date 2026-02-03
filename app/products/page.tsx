@@ -14,7 +14,7 @@ const products = [
     description: "1〜2人用の旬の規格外野菜セット。初めての方におすすめ。",
     price: "¥2,480",
     category: "セット",
-    image: "/products/seasonal-box-s.jpg",
+    image: "/products/seasonal-box-s.png",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const products = [
     description: "3〜4人用のファミリー向けセット。週末の料理に最適。",
     price: "¥3,980",
     category: "セット",
-    image: "/products/seasonal-box-m.jpg",
+    image: "/products/seasonal-box-m.png",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const products = [
     description: "大家族やまとめ買い派に。たっぷり届く満足サイズ。",
     price: "¥5,480",
     category: "セット",
-    image: "/products/seasonal-box-l.jpg",
+    image: "/products/seasonal-box-l.png",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const products = [
     description: "甘みが凝縮された乾燥にんじん。おやつやサラダのトッピングに。",
     price: "¥580",
     category: "ドライ",
-    image: "/products/dry-carrot.jpg",
+    image: "/products/dry-carrot.png",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const products = [
     description: "サクサク食感の乾燥れんこんチップス。そのまま食べられます。",
     price: "¥680",
     category: "ドライ",
-    image: "/products/dry-lotus.jpg",
+    image: "/products/dry-lotus.png",
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const products = [
     description: "いろんな野菜を少しずつ楽しめるお得なミックスパック。",
     price: "¥980",
     category: "ドライ",
-    image: "/products/dry-mix.jpg",
+    image: "/products/dry-mix.png",
   },
   {
     id: 7,
@@ -62,7 +62,7 @@ const products = [
     description: "ほうれん草とケールベース。毎朝の健康習慣に。",
     price: "¥1,680",
     category: "スムージー",
-    image: "/products/smoothie-green.jpg",
+    image: "/products/smoothie-green.png",
   },
   {
     id: 8,
@@ -70,7 +70,7 @@ const products = [
     description: "にんじんとかぼちゃベース。甘くて飲みやすい。",
     price: "¥1,680",
     category: "スムージー",
-    image: "/products/smoothie-orange.jpg",
+    image: "/products/smoothie-orange.png",
   },
   {
     id: 9,
@@ -78,7 +78,7 @@ const products = [
     description: "紫キャベツとビーツベース。アンチエイジングに。",
     price: "¥1,880",
     category: "スムージー",
-    image: "/products/smoothie-purple.jpg",
+    image: "/products/smoothie-purple.png",
   },
 ];
 
