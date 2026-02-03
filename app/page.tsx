@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import Header from "./components/Header";
 import NewsSection from "./components/NewsSection";
 
@@ -111,28 +112,32 @@ export default function Home() {
                 title: "季節の野菜ボックス",
                 description: "旬の規格外野菜を詰め合わせた、お得なセット。",
                 price: "¥2,480〜",
+                image: "/products/seasonal-box-m.png",
               },
               {
                 title: "ドライベジタブル",
                 description: "規格外野菜を丁寧に乾燥させた、長期保存可能なスナック。",
                 price: "¥980〜",
+                image: "/products/dry-carrot.png",
               },
               {
                 title: "野菜スムージーキット",
                 description: "忙しい朝にぴったり。カット野菜の冷凍パック。",
                 price: "¥1,680〜",
+                image: "/products/smoothie-green.png",
               },
             ].map((product, index) => (
               <div
                 key={index}
                 className={`bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow ${index > 0 ? "hidden md:block" : ""}`}
               >
-                <div className="bg-beige rounded-xl aspect-square mb-6 flex items-center justify-center">
-                  <div className="text-center text-green-primary/40">
-                    <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
+                <div className="bg-beige rounded-xl aspect-square mb-6 overflow-hidden relative">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover scale-110 object-top"
+                  />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{product.title}</h3>
                 <p className="text-foreground/60 text-sm mb-4">{product.description}</p>

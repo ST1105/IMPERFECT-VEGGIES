@@ -142,13 +142,13 @@ export default function ProductsPage() {
                 key={product.id}
                 className="bg-white border border-beige-dark rounded-2xl p-6 hover:shadow-lg transition-shadow group"
               >
-                <div className="bg-beige rounded-xl aspect-square mb-6 flex items-center justify-center overflow-hidden relative">
+                <div className="bg-beige rounded-xl aspect-square mb-6 overflow-hidden relative">
                   {product.image ? (
                     <Image
                       src={product.image}
                       alt={product.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform"
+                      className="object-cover scale-110 object-top group-hover:scale-125 transition-transform"
                     />
                   ) : (
                     <div className="text-center text-green-primary/40 group-hover:scale-110 transition-transform">
