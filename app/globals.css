@@ -33,31 +33,22 @@ html {
 }
 
 /* ============================================
-   ヒーロー背景スライドショー
-
-   3枚の画像が4秒ずつ表示され、12秒で1周
+   スクロールインジケーターアニメーション
 ============================================ */
-.hero-slide {
-  opacity: 0;
-  animation: heroFade 12s infinite;
-}
-
-@keyframes heroFade {
+@keyframes scrollLine {
   0% {
-    opacity: 0;
+    transform: translateY(-100%);
   }
-  8% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 1;
-  }
-  42% {
-    opacity: 0;
+  50% {
+    transform: translateY(0);
   }
   100% {
-    opacity: 0;
+    transform: translateY(100%);
   }
+}
+
+.animate-scroll-line {
+  animation: scrollLine 1.5s ease-in-out infinite;
 }
 
 /* ============================================

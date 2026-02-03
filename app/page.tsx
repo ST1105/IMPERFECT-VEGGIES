@@ -12,50 +12,57 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {(() => {
-          const heroImages = [
-            "/hero/field1.png",
-            "/hero/rice_field.jpg",
-            "/hero/vegges_kikakugai.jpg",
-          ];
-          return (
-            <div className="absolute inset-0 z-0">
-              {heroImages.map((src, index) => (
-                <div
-                  key={index}
-                  className="absolute inset-0 bg-cover bg-center hero-slide"
-                  style={{
-                    backgroundImage: `url(${src})`,
-                    animationDelay: `${index * 4}s`,
-                  }}
-                />
-              ))}
-              {/* オーバーレイ（テキストを読みやすくする） */}
-              <div className="absolute inset-0 bg-white/70" />
-            </div>
-          );
-        })()}
+        {/* 背景：シンプルなグラデーション */}
+        <div className="absolute inset-0 bg-gradient-to-b from-beige/50 via-white to-beige/20" />
 
+        {/* 装飾要素（控えめなぼかし円） */}
+        <div className="absolute top-1/4 -right-32 w-64 h-64 bg-green-primary/[0.03] rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-beige-dark/30 rounded-full blur-3xl" />
+
+        {/* メインコンテンツ */}
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
-          <p className="text-green-primary text-sm tracking-widest mb-4 font-medium">
-            IMPERFECT IS BEAUTIFUL
+          {/* タグライン */}
+          <p className="text-green-primary/70 text-xs sm:text-sm tracking-[0.3em] uppercase mb-6 sm:mb-8 font-medium animate-fade-in-up">
+            Imperfect is Beautiful
           </p>
-          <h1 className="text-4xl md:text-6xl font-klee font-semibold text-foreground mb-6 leading-tight">
-            食材の命を
-            <br />
-            <span className="text-green-primary">生かし切る。</span>
+
+          {/* メインコピー（大幅にサイズアップ） */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-semibold text-foreground leading-[1.2] tracking-tight mb-8 sm:mb-12 animate-fade-in-up animation-delay-200">
+            <span className="block mb-2">食材の命を</span>
+            <span className="relative inline-block text-green-primary">
+              生かし切る。
+              <span className="absolute -bottom-1 sm:-bottom-2 left-1/2 -translate-x-1/2 w-16 sm:w-24 h-0.5 sm:h-1 bg-green-light/50 rounded-full" />
+            </span>
           </h1>
-          <p className="text-foreground/70 max-w-xl mx-auto mb-10 leading-relaxed">
-            規格外野菜をもっと身近に。
-            <br />
+
+          {/* サブテキスト */}
+          <p className="text-foreground/50 text-sm sm:text-base max-w-md mx-auto mb-10 sm:mb-14 leading-relaxed animate-fade-in-up animation-delay-400">
+            規格外野菜をもっと身近に。<br className="hidden sm:block" />
             地球にやさしく、食卓をゆたかに。
           </p>
-          <Link
-            href="#products"
-            className="inline-block bg-green-primary text-white px-8 py-3 rounded-full text-sm hover:bg-green-light transition-colors"
-          >
-            商品を見る
-          </Link>
+
+          {/* CTA（アイコン追加、ホバーエフェクト強化） */}
+          <div className="animate-fade-in-up animation-delay-600">
+            <Link
+              href="#products"
+              className="inline-flex items-center gap-2 bg-green-primary text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium hover:bg-green-light transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+            >
+              商品を見る
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+
+        {/* スクロールインジケーター */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in-up animation-delay-800">
+          <div className="flex flex-col items-center gap-2 text-foreground/30">
+            <span className="text-xs tracking-widest uppercase">Scroll</span>
+            <div className="w-px h-8 bg-gradient-to-b from-foreground/30 to-transparent relative overflow-hidden">
+              <div className="absolute inset-0 bg-green-primary/60 animate-scroll-line" />
+            </div>
+          </div>
         </div>
       </section>
 
