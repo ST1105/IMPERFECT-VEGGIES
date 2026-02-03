@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Header from "../components/Header";
@@ -13,6 +14,7 @@ const products = [
     description: "1〜2人用の旬の規格外野菜セット。初めての方におすすめ。",
     price: "¥2,480",
     category: "セット",
+    image: "/products/seasonal-box-s.jpg",
   },
   {
     id: 2,
@@ -20,6 +22,7 @@ const products = [
     description: "3〜4人用のファミリー向けセット。週末の料理に最適。",
     price: "¥3,980",
     category: "セット",
+    image: "/products/seasonal-box-m.jpg",
   },
   {
     id: 3,
@@ -27,6 +30,7 @@ const products = [
     description: "大家族やまとめ買い派に。たっぷり届く満足サイズ。",
     price: "¥5,480",
     category: "セット",
+    image: "/products/seasonal-box-l.jpg",
   },
   {
     id: 4,
@@ -34,6 +38,7 @@ const products = [
     description: "甘みが凝縮された乾燥にんじん。おやつやサラダのトッピングに。",
     price: "¥580",
     category: "ドライ",
+    image: "/products/dry-carrot.jpg",
   },
   {
     id: 5,
@@ -41,6 +46,7 @@ const products = [
     description: "サクサク食感の乾燥れんこんチップス。そのまま食べられます。",
     price: "¥680",
     category: "ドライ",
+    image: "/products/dry-lotus.jpg",
   },
   {
     id: 6,
@@ -48,6 +54,7 @@ const products = [
     description: "いろんな野菜を少しずつ楽しめるお得なミックスパック。",
     price: "¥980",
     category: "ドライ",
+    image: "/products/dry-mix.jpg",
   },
   {
     id: 7,
@@ -55,6 +62,7 @@ const products = [
     description: "ほうれん草とケールベース。毎朝の健康習慣に。",
     price: "¥1,680",
     category: "スムージー",
+    image: "/products/smoothie-green.jpg",
   },
   {
     id: 8,
@@ -62,6 +70,7 @@ const products = [
     description: "にんじんとかぼちゃベース。甘くて飲みやすい。",
     price: "¥1,680",
     category: "スムージー",
+    image: "/products/smoothie-orange.jpg",
   },
   {
     id: 9,
@@ -69,6 +78,7 @@ const products = [
     description: "紫キャベツとビーツベース。アンチエイジングに。",
     price: "¥1,880",
     category: "スムージー",
+    image: "/products/smoothie-purple.jpg",
   },
 ];
 
@@ -132,12 +142,21 @@ export default function ProductsPage() {
                 key={product.id}
                 className="bg-white border border-beige-dark rounded-2xl p-6 hover:shadow-lg transition-shadow group"
               >
-                <div className="bg-beige rounded-xl aspect-square mb-6 flex items-center justify-center overflow-hidden">
-                  <div className="text-center text-green-primary/40 group-hover:scale-110 transition-transform">
-                    <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
+                <div className="bg-beige rounded-xl aspect-square mb-6 flex items-center justify-center overflow-hidden relative">
+                  {product.image ? (
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform"
+                    />
+                  ) : (
+                    <div className="text-center text-green-primary/40 group-hover:scale-110 transition-transform">
+                      <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
                 <span className="inline-block bg-beige text-green-primary text-xs px-3 py-1 rounded-full mb-3">
                   {product.category}
