@@ -35,7 +35,7 @@ export default function Home() {
               src={src}
               alt="畑の風景"
               fill
-              className={`object-cover transition-opacity duration-1000 ${
+              className={`object-cover object-center transition-opacity duration-1000 ${
                 index === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               priority={index === 0}
@@ -45,39 +45,25 @@ export default function Home() {
         {/* 左から右へのグラデーションオーバーレイ */}
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 via-40% to-transparent" />
 
-        {/* メインコンテンツ */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-xl -translate-y-12 sm:-translate-y-16 lg:-translate-y-20">
-            {/* メインコピー */}
-            <div className="mb-8 sm:mb-10 animate-fade-in-up animation-delay-200">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-klee font-medium text-foreground leading-[1.2] tracking-tight mb-2">
-                食材の命を
-              </p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-bold text-green-primary leading-[1.1] tracking-tight relative inline-block">
-                生かし切る。
-                <span className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-1 sm:h-1.5 bg-green-primary/30 rounded-full" />
-              </h1>
-            </div>
+        {/* メインコンテンツ - Z型レイアウト */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 min-h-[calc(100vh-5rem)] flex flex-col justify-center">
 
-            {/* サブテキスト */}
-            <p className="text-foreground/60 text-base sm:text-lg mb-10 sm:mb-12 leading-relaxed animate-fade-in-up animation-delay-400">
-              規格外野菜をもっと身近に。<br className="hidden sm:block" />
-              地球にやさしく、食卓をゆたかに。
+          {/* 上部: サブテキスト（左上に配置 - Z型の始点） */}
+          <p className="text-foreground/60 text-sm sm:text-base mb-8 max-w-xs leading-relaxed animate-fade-in-up animation-delay-200">
+            規格外野菜をもっと身近に。<br />
+            地球にやさしく、食卓をゆたかに。
+          </p>
+
+          {/* 中央: メインコピー（大きく、インパクトを持たせる - Z型の中央） */}
+          <div className="mb-12 animate-fade-in-up animation-delay-400">
+            <p className="text-xl sm:text-2xl md:text-3xl font-klee font-medium text-foreground/80 mb-2">
+              食材の命を
             </p>
-
-            {/* CTA */}
-            <div className="animate-fade-in-up animation-delay-600">
-              <Link
-                href="#products"
-                className="inline-flex items-center gap-2 bg-green-primary text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-green-light transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-              >
-                商品を見る
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-klee font-bold text-green-primary leading-[1.0] tracking-tight">
+              生かし切る。
+            </h1>
           </div>
+
         </div>
 
         {/* スクロールインジケーター */}
