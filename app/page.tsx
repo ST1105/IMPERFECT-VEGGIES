@@ -1,66 +1,91 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "./components/Header";
 import NewsSection from "./components/NewsSection";
 
+const heroImages = [
+  "/hero/field1.png",
+  "/hero/rice_field.jpg",
+  "/hero/vegges_kikakugai.jpg",
+];
+
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="min-h-screen bg-white">
       <Header currentPage="home" />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* 背景：シンプルなグラデーション */}
-        <div className="absolute inset-0 bg-gradient-to-b from-beige/50 via-white to-beige/20" />
-
-        {/* 装飾要素（控えめなぼかし円） */}
-        <div className="absolute top-1/4 -right-32 w-64 h-64 bg-green-primary/[0.03] rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-beige-dark/30 rounded-full blur-3xl" />
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* 背景画像スライドショー */}
+        <div className="absolute inset-0">
+          {heroImages.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt="畑の風景"
+              fill
+              className={`object-cover transition-opacity duration-1000 ${
+                index === currentImageIndex ? "opacity-100" : "opacity-0"
+              }`}
+              priority={index === 0}
+            />
+          ))}
+        </div>
+        {/* 左から右へのグラデーションオーバーレイ */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 via-40% to-transparent" />
 
         {/* メインコンテンツ */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
-          {/* タグライン */}
-          <p className="text-green-primary/70 text-xs sm:text-sm tracking-[0.3em] uppercase mb-6 sm:mb-8 font-medium animate-fade-in-up">
-            Imperfect is Beautiful
-          </p>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="max-w-xl -translate-y-12 sm:-translate-y-16 lg:-translate-y-20">
+            {/* メインコピー */}
+            <div className="mb-8 sm:mb-10 animate-fade-in-up animation-delay-200">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-klee font-medium text-foreground leading-[1.2] tracking-tight mb-2">
+                食材の命を
+              </p>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-bold text-green-primary leading-[1.1] tracking-tight relative inline-block">
+                生かし切る。
+                <span className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-1 sm:h-1.5 bg-green-primary/30 rounded-full" />
+              </h1>
+            </div>
 
-          {/* メインコピー（大幅にサイズアップ） */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-semibold text-foreground leading-[1.2] tracking-tight mb-8 sm:mb-12 animate-fade-in-up animation-delay-200">
-            <span className="block mb-2">食材の命を</span>
-            <span className="relative inline-block text-green-primary">
-              生かし切る。
-              <span className="absolute -bottom-1 sm:-bottom-2 left-1/2 -translate-x-1/2 w-16 sm:w-24 h-0.5 sm:h-1 bg-green-light/50 rounded-full" />
-            </span>
-          </h1>
+            {/* サブテキスト */}
+            <p className="text-foreground/60 text-base sm:text-lg mb-10 sm:mb-12 leading-relaxed animate-fade-in-up animation-delay-400">
+              規格外野菜をもっと身近に。<br className="hidden sm:block" />
+              地球にやさしく、食卓をゆたかに。
+            </p>
 
-          {/* サブテキスト */}
-          <p className="text-foreground/50 text-sm sm:text-base max-w-md mx-auto mb-10 sm:mb-14 leading-relaxed animate-fade-in-up animation-delay-400">
-            規格外野菜をもっと身近に。<br className="hidden sm:block" />
-            地球にやさしく、食卓をゆたかに。
-          </p>
-
-          {/* CTA（アイコン追加、ホバーエフェクト強化） */}
-          <div className="animate-fade-in-up animation-delay-600">
-            <Link
-              href="#products"
-              className="inline-flex items-center gap-2 bg-green-primary text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium hover:bg-green-light transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-            >
-              商品を見る
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+            {/* CTA */}
+            <div className="animate-fade-in-up animation-delay-600">
+              <Link
+                href="#products"
+                className="inline-flex items-center gap-2 bg-green-primary text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-green-light transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              >
+                商品を見る
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
 
         {/* スクロールインジケーター */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in-up animation-delay-800">
-          <div className="flex flex-col items-center gap-2 text-foreground/30">
-            <span className="text-xs tracking-widest uppercase">Scroll</span>
-            <div className="w-px h-8 bg-gradient-to-b from-foreground/30 to-transparent relative overflow-hidden">
-              <div className="absolute inset-0 bg-green-primary/60 animate-scroll-line" />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-fade-in-up animation-delay-800">
+          <div className="flex flex-col items-center gap-3 text-white drop-shadow-md">
+            <span className="text-sm font-medium tracking-widest uppercase">Scroll</span>
+            <div className="w-0.5 h-12 bg-linear-to-b from-white to-transparent relative overflow-hidden rounded-full">
+              <div className="absolute inset-0 bg-white animate-scroll-line" />
             </div>
           </div>
         </div>
