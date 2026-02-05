@@ -85,3 +85,83 @@ html {
 .animation-delay-800 {
   animation-delay: 0.8s;
 }
+
+/* ============================================
+   スクロールアニメーション
+============================================ */
+
+/* 基本の非表示状態 */
+.scroll-animate {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 表示状態 */
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* フェードインアップ（下から上へ） */
+.scroll-fade-up {
+  transform: translateY(60px);
+}
+
+/* フェードインダウン（上から下へ） */
+.scroll-fade-down {
+  transform: translateY(-60px);
+}
+
+/* フェードイン左から */
+.scroll-fade-left {
+  transform: translateX(-60px);
+}
+
+/* フェードイン右から */
+.scroll-fade-right {
+  transform: translateX(60px);
+}
+
+/* スケールイン */
+.scroll-scale {
+  transform: scale(0.9);
+}
+
+/* スケールイン + フェードアップ */
+.scroll-scale-up {
+  transform: scale(0.9) translateY(40px);
+}
+
+/* 遅延用クラス */
+.scroll-delay-100 {
+  transition-delay: 0.1s;
+}
+
+.scroll-delay-200 {
+  transition-delay: 0.2s;
+}
+
+.scroll-delay-300 {
+  transition-delay: 0.3s;
+}
+
+.scroll-delay-400 {
+  transition-delay: 0.4s;
+}
+
+.scroll-delay-500 {
+  transition-delay: 0.5s;
+}
+
+/* 速度調整 */
+.scroll-duration-500 {
+  transition-duration: 0.5s;
+}
+
+.scroll-duration-1000 {
+  transition-duration: 1s;
+}
+
+.scroll-duration-1200 {
+  transition-duration: 1.2s;
+}

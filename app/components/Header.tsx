@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 
 type HeaderProps = {
@@ -11,7 +11,22 @@ type HeaderProps = {
 
 export default function Header({ currentPage = "home" }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const { openCart, totalItems } = useCart();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 100px以上スクロールしたらヘッダーを表示
+      const scrollThreshold = 100;
+      setIsVisible(window.scrollY > scrollThreshold);
+    };
+
+    // 初期状態をチェック
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: currentPage === "home" ? "#about" : "/#about", label: "私たちについて", key: "about" },
@@ -21,7 +36,11 @@ export default function Header({ currentPage = "home" }: HeaderProps) {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 border-b border-beige-dark">
+    <header
+      className={`fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 border-b border-beige-dark transition-transform duration-500 ease-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center">
         <Link href="/" className="flex items-center gap-3 text-2xl font-light tracking-wider text-green-primary">
           <Image

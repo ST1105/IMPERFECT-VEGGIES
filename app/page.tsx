@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "./components/Header";
 import NewsSection from "./components/NewsSection";
+import { useScrollAnimationAll } from "./hooks/useScrollAnimation";
 
 const heroImages = [
   "/hero/field1.png",
@@ -14,6 +15,9 @@ const heroImages = [
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // スクロールアニメーションを有効化
+  useScrollAnimationAll();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,20 +50,20 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 via-40% to-transparent" />
 
         {/* メインコンテンツ - Z型レイアウト */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 min-h-[calc(100vh-5rem)] flex flex-col justify-start pt-[20vh]">
 
           {/* 上部: サブテキスト（左上に配置 - Z型の始点） */}
-          <p className="text-foreground/60 text-sm sm:text-base mb-8 max-w-xs leading-relaxed animate-fade-in-up animation-delay-200">
+          <p className="text-foreground/60 text-sm sm:text-base mb-12 max-w-xs leading-relaxed animate-fade-in-up animation-delay-200">
             規格外野菜をもっと身近に。<br />
             地球にやさしく、食卓をゆたかに。
           </p>
 
           {/* 中央: メインコピー（大きく、インパクトを持たせる - Z型の中央） */}
           <div className="mb-12 animate-fade-in-up animation-delay-400">
-            <p className="text-xl sm:text-2xl md:text-3xl font-klee font-medium text-foreground/80 mb-2">
+            <p className="text-xl sm:text-2xl md:text-3xl font-klee font-medium text-foreground/80 mb-4">
               食材の命を
             </p>
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-klee font-bold text-green-primary leading-[1.0] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-bold text-green-primary leading-[1.0] tracking-tight">
               生かし切る。
             </h1>
           </div>
@@ -82,30 +86,30 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-green-primary text-sm tracking-widest mb-4">OUR STORY</p>
-              <h2 className="text-3xl font-klee mb-6">
+              <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">OUR STORY</p>
+              <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee mb-6">
                 「もったいない」を
                 <br />
                 「おいしい」に。
               </h2>
-              <p className="text-foreground/60 leading-relaxed mb-6">
+              <p className="scroll-animate scroll-fade-up scroll-delay-200 text-foreground/60 leading-relaxed mb-6">
                 日本では年間約600万トンもの食品が廃棄されています。
                 その多くは、味や品質に問題がないにもかかわらず、
                 見た目の理由だけで市場に出回ることができない野菜たちです。
               </p>
-              <p className="text-foreground/60 leading-relaxed mb-8">
+              <p className="scroll-animate scroll-fade-up scroll-delay-300 text-foreground/60 leading-relaxed mb-8">
                 私たちimperfect veggiesは、
                 そんな規格外野菜に新しい価値を与え、
                 食品ロスの削減と持続可能な社会の実現に貢献します。
               </p>
               <Link
                 href="/about"
-                className="inline-block border-2 border-green-primary text-green-primary px-6 py-3 rounded-full text-sm hover:bg-green-primary hover:text-white transition-colors"
+                className="scroll-animate scroll-fade-up scroll-delay-400 inline-block border-2 border-green-primary text-green-primary px-6 py-3 rounded-full text-sm hover:bg-green-primary hover:text-white transition-colors"
               >
                 もっと見る
               </Link>
             </div>
-            <div className="hidden md:flex bg-beige rounded-2xl aspect-square items-center justify-center">
+            <div className="scroll-animate scroll-fade-right scroll-delay-200 hidden md:flex bg-beige rounded-2xl aspect-square items-center justify-center">
               <div className="text-center text-green-primary/40">
                 <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -121,8 +125,8 @@ export default function Home() {
       <section id="products" className="py-24 bg-beige/30">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-green-primary text-sm tracking-widest mb-4">PRODUCTS</p>
-            <h2 className="text-3xl font-klee">商品紹介</h2>
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">PRODUCTS</p>
+            <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee">商品紹介</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -147,7 +151,8 @@ export default function Home() {
             ].map((product, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow ${index > 0 ? "hidden md:block" : ""}`}
+                className={`scroll-animate scroll-scale-up bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow ${index > 0 ? "hidden md:block" : ""}`}
+                style={{ transitionDelay: `${index * 0.15}s` }}
               >
                 <div className="bg-beige rounded-xl aspect-square mb-6 overflow-hidden relative">
                   <Image
@@ -163,7 +168,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="scroll-animate scroll-fade-up scroll-delay-400 text-center mt-12">
             <Link
               href="/products"
               className="inline-block border-2 border-green-primary text-green-primary px-6 py-3 rounded-full text-sm hover:bg-green-primary hover:text-white transition-colors"
@@ -178,12 +183,12 @@ export default function Home() {
       <section id="shop" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-green-primary text-sm tracking-widest mb-4">SHOP</p>
-            <h2 className="text-3xl font-klee">店舗情報</h2>
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">SHOP</p>
+            <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee">店舗情報</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Google Map */}
-            <div className="rounded-2xl overflow-hidden aspect-video">
+            <div className="scroll-animate scroll-fade-left rounded-2xl overflow-hidden aspect-video">
               <iframe
                 src="https://www.google.com/maps?q=セブンイレブン+渋谷駅前店&output=embed"
                 width="100%"
@@ -197,7 +202,7 @@ export default function Home() {
             </div>
 
             {/* Shop Info */}
-            <div className="space-y-8">
+            <div className="scroll-animate scroll-fade-right scroll-delay-200 space-y-8">
               <div>
                 <h3 className="text-xl font-medium mb-4">imperfect veggies 本店</h3>
                 <dl className="space-y-4 text-foreground/70">
@@ -236,10 +241,12 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-green-primary text-sm tracking-widest mb-4">NEWS</p>
-            <h2 className="text-3xl font-klee">お知らせ</h2>
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">NEWS</p>
+            <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee">お知らせ</h2>
           </div>
-          <NewsSection showTitle={false} />
+          <div className="scroll-animate scroll-fade-up scroll-delay-200">
+            <NewsSection showTitle={false} />
+          </div>
         </div>
       </section>
 
@@ -248,19 +255,19 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 mb-16">
             <div>
-              <h2 className="text-3xl font-klee mb-6">お問い合わせ</h2>
-              <p className="text-white/70 leading-relaxed mb-8">
+              <h2 className="scroll-animate scroll-fade-up text-3xl font-klee mb-6">お問い合わせ</h2>
+              <p className="scroll-animate scroll-fade-up scroll-delay-100 text-white/70 leading-relaxed mb-8">
                 商品に関するご質問、法人様からのお問い合わせなど、
                 お気軽にご連絡ください。
               </p>
               <a
                 href="mailto:hello@imperfect-veggies.com"
-                className="inline-block border border-white/30 px-6 py-3 rounded-full text-sm hover:bg-white hover:text-green-primary transition-colors"
+                className="scroll-animate scroll-fade-up scroll-delay-200 inline-block border border-white/30 px-6 py-3 rounded-full text-sm hover:bg-white hover:text-green-primary transition-colors"
               >
                 hello@imperfect-veggies.com
               </a>
             </div>
-            <div>
+            <div className="scroll-animate scroll-fade-right scroll-delay-200">
               <h3 className="text-lg font-light mb-6">Follow Us</h3>
               <div className="flex gap-4">
                 {["Instagram", "Twitter", "Facebook"].map((sns) => (
