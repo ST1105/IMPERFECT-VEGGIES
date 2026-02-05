@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "./components/Header";
@@ -15,9 +15,31 @@ const heroImages = [
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+  const [heroHeight, setHeroHeight] = useState(1000);
 
   // スクロールアニメーションを有効化
   useScrollAnimationAll();
+
+  // スクロール位置とウィンドウサイズを監視
+  const handleScroll = useCallback(() => {
+    setScrollY(window.scrollY);
+  }, []);
+
+  const handleResize = useCallback(() => {
+    setHeroHeight(window.innerHeight);
+  }, []);
+
+  useEffect(() => {
+    handleResize();
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleScroll, handleResize]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,14 +47,27 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  // ヒーローセクションのアニメーション値を計算
+  const scrollProgress = Math.min(scrollY / heroHeight, 1);
+  const heroOpacity = 1 - scrollProgress * 1.5;
+  const heroScale = 1 + scrollProgress * 0.1;
+  const contentOpacity = 1 - scrollProgress * 2;
+  const contentTranslateY = scrollProgress * -50;
   return (
     <div className="min-h-screen bg-white">
       <Header currentPage="home" />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* 背景画像スライドショー */}
-        <div className="absolute inset-0">
+      <section className="min-h-screen flex items-center pt-20 overflow-hidden sticky top-0 bg-white">
+        {/* 背景画像スライドショー - パララックス効果 */}
+        <div
+          className="absolute inset-0 will-change-transform"
+          style={{
+            transform: `scale(${heroScale})`,
+            opacity: Math.max(heroOpacity, 0),
+          }}
+        >
           {heroImages.map((src, index) => (
             <Image
               key={src}
@@ -47,10 +82,16 @@ export default function Home() {
           ))}
         </div>
         {/* 左から右へのグラデーションオーバーレイ */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 via-40% to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/90 via-40% to-transparent" />
 
         {/* メインコンテンツ - Z型レイアウト */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 min-h-[calc(100vh-5rem)] flex flex-col justify-start pt-[20vh]">
+        <div
+          className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 min-h-[calc(100vh-5rem)] flex flex-col justify-start pt-[20vh] will-change-transform"
+          style={{
+            opacity: Math.max(contentOpacity, 0),
+            transform: `translateY(${contentTranslateY}px)`,
+          }}
+        >
 
           {/* 上部: サブテキスト（左上に配置 - Z型の始点） */}
           <p className="text-foreground/60 text-sm sm:text-base mb-12 max-w-xs leading-relaxed animate-fade-in-up animation-delay-200">
@@ -63,7 +104,7 @@ export default function Home() {
             <p className="text-xl sm:text-2xl md:text-3xl font-klee font-medium text-foreground/80 mb-4">
               食材の命を
             </p>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-bold text-green-primary leading-[1.0] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-klee font-bold text-green-primary leading-none tracking-tight">
               生かし切る。
             </h1>
           </div>
@@ -71,7 +112,10 @@ export default function Home() {
         </div>
 
         {/* スクロールインジケーター */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-fade-in-up animation-delay-800">
+        <div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-fade-in-up animation-delay-800"
+          style={{ opacity: Math.max(contentOpacity, 0) }}
+        >
           <div className="flex flex-col items-center gap-3 text-white drop-shadow-md">
             <span className="text-sm font-medium tracking-widest uppercase">Scroll</span>
             <div className="w-0.5 h-12 bg-linear-to-b from-white to-transparent relative overflow-hidden rounded-full">
@@ -81,8 +125,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-white">
+      {/* About Section - オーバーラップ効果 */}
+      <section id="about" className="relative z-10 py-24 bg-white rounded-t-[40px] shadow-[0_-20px_60px_rgba(0,0,0,0.1)]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -109,13 +153,13 @@ export default function Home() {
                 もっと見る
               </Link>
             </div>
-            <div className="scroll-animate scroll-fade-right scroll-delay-200 hidden md:flex bg-beige rounded-2xl aspect-square items-center justify-center">
-              <div className="text-center text-green-primary/40">
-                <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <p className="text-sm">Image Placeholder</p>
-              </div>
+            <div className="scroll-animate scroll-fade-right scroll-delay-200 hidden md:block bg-beige rounded-2xl aspect-[4/3] overflow-hidden relative">
+              <Image
+                src="/about/story.png"
+                alt="私たちについて"
+                fill
+                className="object-cover object-center"
+              />
             </div>
           </div>
         </div>
@@ -190,7 +234,7 @@ export default function Home() {
             {/* Google Map */}
             <div className="scroll-animate scroll-fade-left rounded-2xl overflow-hidden aspect-video">
               <iframe
-                src="https://www.google.com/maps?q=セブンイレブン+渋谷駅前店&output=embed"
+                src="https://www.google.com/maps?q=アトレ恵比寿&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

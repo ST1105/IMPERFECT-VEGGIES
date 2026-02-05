@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import Header from "../components/Header";
+import { useScrollAnimationAll } from "../hooks/useScrollAnimation";
 
 export default function ShopPage() {
+  useScrollAnimationAll();
+
   return (
     <div className="min-h-screen bg-white">
       <Header currentPage="shop" />
@@ -11,9 +14,9 @@ export default function ShopPage() {
       {/* Shop Hero Section */}
       <section className="pt-32 pb-16 bg-beige/30">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-green-primary text-sm tracking-widest mb-4">SHOP</p>
-          <h1 className="text-4xl font-klee mb-6">店舗情報</h1>
-          <p className="text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">SHOP</p>
+          <h1 className="scroll-animate scroll-fade-up scroll-delay-100 text-4xl font-klee mb-6">店舗情報</h1>
+          <p className="scroll-animate scroll-fade-up scroll-delay-200 text-foreground/60 max-w-2xl mx-auto leading-relaxed">
             規格外野菜の魅力を直接お伝えする、imperfect veggiesの実店舗です。
             <br className="hidden md:block" />
             新鮮な野菜との出会いをお楽しみください。
@@ -25,11 +28,11 @@ export default function ShopPage() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-green-primary text-sm tracking-widest mb-4">CONCEPT</p>
-            <h2 className="text-3xl font-klee mb-6">店舗のこだわり</h2>
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">CONCEPT</p>
+            <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee mb-6">店舗のこだわり</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
+            <div className="scroll-animate scroll-fade-up text-center p-6">
               <div className="w-16 h-16 bg-beige rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-green-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -41,7 +44,7 @@ export default function ShopPage() {
                 形は不揃いでも、味と鮮度は折り紙付きです。
               </p>
             </div>
-            <div className="text-center p-6">
+            <div className="scroll-animate scroll-fade-up scroll-delay-100 text-center p-6">
               <div className="w-16 h-16 bg-beige rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-green-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -53,7 +56,7 @@ export default function ShopPage() {
                 スタッフが親身にアドバイスいたします。
               </p>
             </div>
-            <div className="text-center p-6">
+            <div className="scroll-animate scroll-fade-up scroll-delay-200 text-center p-6">
               <div className="w-16 h-16 bg-beige rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-green-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -73,14 +76,14 @@ export default function ShopPage() {
       <section className="py-24 bg-beige/30">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-green-primary text-sm tracking-widest mb-4">ACCESS</p>
-            <h2 className="text-3xl font-klee">アクセス・営業案内</h2>
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">ACCESS</p>
+            <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee">アクセス・営業案内</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Google Map */}
-            <div className="rounded-2xl overflow-hidden aspect-video shadow-lg">
+            <div className="scroll-animate scroll-fade-left rounded-2xl overflow-hidden aspect-video shadow-lg">
               <iframe
-                src="https://www.google.com/maps?q=セブンイレブン+渋谷駅前店&output=embed"
+                src="https://www.google.com/maps?q=アトレ恵比寿&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -92,7 +95,7 @@ export default function ShopPage() {
             </div>
 
             {/* Shop Info */}
-            <div className="space-y-8">
+            <div className="scroll-animate scroll-fade-right scroll-delay-200 space-y-8">
               <div>
                 <h3 className="text-xl font-medium mb-4">imperfect veggies 本店</h3>
                 <dl className="space-y-4 text-foreground/70">
@@ -140,9 +143,9 @@ export default function ShopPage() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-green-primary text-sm tracking-widest mb-4">IN STORE</p>
-            <h2 className="text-3xl font-klee mb-6">店頭でのお取り扱い</h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">IN STORE</p>
+            <h2 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee mb-6">店頭でのお取り扱い</h2>
+            <p className="scroll-animate scroll-fade-up scroll-delay-200 text-foreground/60 max-w-2xl mx-auto">
               店舗では、オンラインショップの商品に加え、店頭限定の商品もご用意しています。
             </p>
           </div>
@@ -153,13 +156,17 @@ export default function ShopPage() {
               { title: "加工品", desc: "ドライベジタブル、ジャム、ピクルスなど" },
               { title: "店頭限定品", desc: "お惣菜やスムージーなど、店舗だけの商品" },
             ].map((item, index) => (
-              <div key={index} className="bg-beige/50 rounded-xl p-6 text-center">
+              <div
+                key={index}
+                className="scroll-animate scroll-scale-up bg-beige/50 rounded-xl p-6 text-center"
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
                 <h3 className="font-medium mb-2">{item.title}</h3>
                 <p className="text-foreground/60 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="scroll-animate scroll-fade-up text-center mt-12">
             <Link
               href="/products"
               className="inline-block border-2 border-green-primary text-green-primary px-6 py-3 rounded-full text-sm hover:bg-green-primary hover:text-white transition-colors"
@@ -173,7 +180,7 @@ export default function ShopPage() {
       {/* Notice Section */}
       <section className="py-16 bg-beige/30">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-2xl p-8 md:p-12">
+          <div className="scroll-animate scroll-fade-up bg-white rounded-2xl p-8 md:p-12">
             <h2 className="text-xl font-medium mb-6 text-center">ご来店のお客様へ</h2>
             <ul className="space-y-4 text-foreground/70">
               <li className="flex items-start gap-3">

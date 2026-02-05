@@ -6,6 +6,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import NewsSection from "../components/NewsSection";
 import { useCart } from "../context/CartContext";
+import { useScrollAnimationAll } from "../hooks/useScrollAnimation";
 
 const products = [
   {
@@ -88,6 +89,8 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("すべて");
   const { addItem } = useCart();
 
+  useScrollAnimationAll();
+
   const filteredProducts =
     selectedCategory === "すべて"
       ? products
@@ -110,16 +113,16 @@ export default function ProductsPage() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <p className="text-green-primary text-sm tracking-widest mb-4">PRODUCTS</p>
-            <h1 className="text-3xl font-klee mb-4">商品一覧</h1>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">PRODUCTS</p>
+            <h1 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee mb-4">商品一覧</h1>
+            <p className="scroll-animate scroll-fade-up scroll-delay-200 text-foreground/60 max-w-2xl mx-auto">
               規格外だけど味は一級品。見た目がちょっと違うだけで廃棄されてしまう野菜たちを、
               お手頃価格でお届けします。
             </p>
           </div>
 
           {/* Category Filter */}
-          <div className="flex justify-center gap-4 mb-12 flex-wrap">
+          <div className="scroll-animate scroll-fade-up scroll-delay-300 flex justify-center gap-4 mb-12 flex-wrap">
             {categories.map((category) => (
               <button
                 key={category}
@@ -137,10 +140,11 @@ export default function ProductsPage() {
 
           {/* Product Grid */}
           <div className="grid md:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product, index) => (
               <div
                 key={product.id}
-                className="bg-white border border-beige-dark rounded-2xl p-6 hover:shadow-lg transition-shadow group"
+                className="scroll-animate scroll-scale-up bg-white border border-beige-dark rounded-2xl p-6 hover:shadow-lg transition-shadow group"
+                style={{ transitionDelay: `${(index % 3) * 0.1}s` }}
               >
                 <div className="bg-beige rounded-xl aspect-square mb-6 overflow-hidden relative">
                   {product.image ? (

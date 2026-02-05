@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Header from "../components/Header";
+import { useScrollAnimationAll } from "../hooks/useScrollAnimation";
 
 const newsItems = [
   {
@@ -23,6 +26,8 @@ const newsItems = [
 ];
 
 export default function NewsPage() {
+  useScrollAnimationAll();
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -31,17 +36,18 @@ export default function NewsPage() {
         <div className="max-w-4xl mx-auto px-6">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <p className="text-green-primary text-sm tracking-widest mb-4">NEWS</p>
-            <h1 className="text-3xl font-klee">お知らせ</h1>
+            <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">NEWS</p>
+            <h1 className="scroll-animate scroll-fade-up scroll-delay-100 text-3xl font-klee">お知らせ</h1>
           </div>
 
           {/* News List */}
           <div className="space-y-4">
-            {newsItems.map((item) => (
+            {newsItems.map((item, index) => (
               <Link
                 key={item.id}
                 href={`/news/${item.id}`}
-                className="block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors"
+                className="scroll-animate scroll-fade-up block bg-beige/30 rounded-xl p-6 hover:bg-beige/50 transition-colors"
+                style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>

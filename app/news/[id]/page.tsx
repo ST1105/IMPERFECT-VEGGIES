@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "../../components/Header";
+import ScrollAnimationWrapper from "../../components/ScrollAnimationWrapper";
 
 const newsData: Record<string, {
   date: string;
@@ -55,42 +56,44 @@ export default async function NewsDetailPage({ params }: Props) {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <main className="pt-24 pb-16">
-        <div className="max-w-3xl mx-auto px-6">
-          {/* Back Link */}
-          <Link
-            href="/news"
-            className="inline-flex items-center gap-2 text-foreground/60 hover:text-green-primary transition-colors mb-8"
-          >
-            <span>←</span>
-            <span>ニュース一覧に戻る</span>
-          </Link>
-
-          {/* Article */}
-          <article>
-            <p className="text-green-primary text-sm mb-4">{news.date}</p>
-            <h1 className="text-2xl md:text-3xl font-klee mb-8">{news.title}</h1>
-
-            <div className="prose prose-lg max-w-none">
-              {news.content.map((paragraph, index) => (
-                <p key={index} className="text-foreground/70 leading-relaxed mb-4">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </article>
-
-          {/* Share / Back */}
-          <div className="mt-12 pt-8 border-t border-beige-dark">
+      <ScrollAnimationWrapper>
+        <main className="pt-24 pb-16">
+          <div className="max-w-3xl mx-auto px-6">
+            {/* Back Link */}
             <Link
               href="/news"
-              className="inline-block border-2 border-green-primary text-green-primary px-6 py-3 rounded-full text-sm hover:bg-green-primary hover:text-white transition-colors"
+              className="scroll-animate scroll-fade-up inline-flex items-center gap-2 text-foreground/60 hover:text-green-primary transition-colors mb-8"
             >
-              ニュース一覧へ
+              <span>←</span>
+              <span>ニュース一覧に戻る</span>
             </Link>
+
+            {/* Article */}
+            <article>
+              <p className="scroll-animate scroll-fade-up scroll-delay-100 text-green-primary text-sm mb-4">{news.date}</p>
+              <h1 className="scroll-animate scroll-fade-up scroll-delay-200 text-2xl md:text-3xl font-klee mb-8">{news.title}</h1>
+
+              <div className="scroll-animate scroll-fade-up scroll-delay-300 prose prose-lg max-w-none">
+                {news.content.map((paragraph, index) => (
+                  <p key={index} className="text-foreground/70 leading-relaxed mb-4">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </article>
+
+            {/* Share / Back */}
+            <div className="scroll-animate scroll-fade-up mt-12 pt-8 border-t border-beige-dark">
+              <Link
+                href="/news"
+                className="inline-block border-2 border-green-primary text-green-primary px-6 py-3 rounded-full text-sm hover:bg-green-primary hover:text-white transition-colors"
+              >
+                ニュース一覧へ
+              </Link>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </ScrollAnimationWrapper>
 
       {/* Footer */}
       <footer className="bg-green-primary text-white py-12">
