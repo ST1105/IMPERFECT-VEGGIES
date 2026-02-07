@@ -166,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-24 bg-beige/30">
+      <section id="products" className="relative z-10 py-24 bg-beige/30">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">PRODUCTS</p>
@@ -224,7 +224,7 @@ export default function Home() {
       </section>
 
       {/* Shop Section */}
-      <section id="shop" className="py-24 bg-white">
+      <section id="shop" className="relative z-10 py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">SHOP</p>
@@ -282,7 +282,7 @@ export default function Home() {
       </section>
 
       {/* News Section */}
-      <section className="py-24 bg-white">
+      <section className="relative z-10 py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="scroll-animate scroll-fade-up text-green-primary text-sm tracking-widest mb-4">NEWS</p>
@@ -295,23 +295,23 @@ export default function Home() {
       </section>
 
       {/* Contact & Footer */}
-      <footer id="contact" className="py-24 bg-green-primary text-white">
+      <footer id="contact" className="relative z-10 py-24 bg-green-primary text-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 mb-16">
             <div>
-              <h2 className="scroll-animate scroll-fade-up text-3xl font-klee mb-6">お問い合わせ</h2>
-              <p className="scroll-animate scroll-fade-up scroll-delay-100 text-white/70 leading-relaxed mb-8">
+              <h2 className="text-3xl font-klee mb-6">お問い合わせ</h2>
+              <p className="text-white/70 leading-relaxed mb-8">
                 商品に関するご質問、法人様からのお問い合わせなど、
                 お気軽にご連絡ください。
               </p>
               <a
                 href="mailto:hello@imperfect-veggies.com"
-                className="scroll-animate scroll-fade-up scroll-delay-200 inline-block border border-white/30 px-6 py-3 rounded-full text-sm hover:bg-white hover:text-green-primary transition-colors"
+                className="inline-block border border-white/30 px-6 py-3 rounded-full text-sm hover:bg-white hover:text-green-primary transition-colors"
               >
                 hello@imperfect-veggies.com
               </a>
             </div>
-            <div className="scroll-animate scroll-fade-right scroll-delay-200">
+            <div>
               <h3 className="text-lg font-light mb-6">Follow Us</h3>
               <div className="flex gap-4">
                 {["Instagram", "Twitter", "Facebook"].map((sns) => (

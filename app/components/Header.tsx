@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 
 type HeaderProps = {
-  currentPage?: "home" | "about" | "products" | "shop";
+  currentPage?: "home" | "about" | "products" | "shop" | "contact";
 };
 
 export default function Header({ currentPage = "home" }: HeaderProps) {
@@ -32,7 +32,7 @@ export default function Header({ currentPage = "home" }: HeaderProps) {
     { href: currentPage === "home" ? "#about" : "/#about", label: "私たちについて", key: "about" },
     { href: "/products", label: "商品紹介", key: "products" },
     { href: "/shop", label: "店舗情報", key: "shop" },
-    { href: currentPage === "home" ? "#contact" : "/#contact", label: "お問い合わせ", key: "contact" },
+    { href: "/contact", label: "お問い合わせ", key: "contact" },
   ];
 
   return (

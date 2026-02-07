@@ -140,11 +140,10 @@ export default function ProductsPage() {
 
           {/* Product Grid */}
           <div className="grid md:grid-cols-3 gap-8">
-            {filteredProducts.map((product, index) => (
+            {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="scroll-animate scroll-scale-up bg-white border border-beige-dark rounded-2xl p-6 hover:shadow-lg transition-shadow group"
-                style={{ transitionDelay: `${(index % 3) * 0.1}s` }}
+                className="bg-white border border-beige-dark rounded-2xl p-6 hover:shadow-lg transition-shadow group"
               >
                 <div className="bg-beige rounded-xl aspect-square mb-6 overflow-hidden relative">
                   {product.image ? (
